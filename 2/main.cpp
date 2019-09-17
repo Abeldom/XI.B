@@ -1,3 +1,7 @@
+///  Adott egy "in.txt" file, amelynek első sorában egy N természetes szám van, s a következő N sorában más természetes számok.
+/// Olvassuk be az N számot, majd hozzunk létre egy 1D tömböt a következő soron lévő elemekkel.
+/// Keressük meg a tömb maximum és minimum elemét, majd alkossunk a kettőből egy számot, s írjuk ki egy "out.txt" fileba
+
 #include <iostream>
 #include <fstream>
 #include <stdlib.h>
