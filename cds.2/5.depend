@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1569303854 source:d:\abel\5\main.cpp
+	<iostream>
+	<fstream>
+
