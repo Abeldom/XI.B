@@ -6,48 +6,30 @@ using namespace std;
 int main()
 {
     ifstream in("input.txt");
+    ofstream out("lkkt.out");
 
     int n;
     in>>n;
 
-    int v[n][n];
-    for(int i=0;i<n; i++){
-        for(int j=0;j<n;j++){
-            in>>v[i][j];
+    int s_up = 0;
+    int s_down = 0;
+    int matrix[n][n];
+    for(int i=0 ; i<n ; i++){
+        for(int j=0; j<n ; j++){
+            in >> matrix[i][j];
+            if( i<j ) s_up += matrix[i][j];
+            else if( i> j) s_down += matrix[i][j];
         }
     }
-    int legnagyobb=0;
 
-    for(int i=0;i<n-legnagyobb;i++){
-        for(int j=0;j<n-legnagyobb;j++){
-            int hasonlitani=v[i][j];
-            int matrixhossz;
-            if(n-i<n-j){
-                matrixhossz=n-i;
-            }
-            if(n-j<n-i){
-                matrixhossz=n-j;
-            }
-
-            bool mehet=true;
-            for(int x=0;x<matrixhossz && mehet==true ; x++){
-
-                    for(int k=i;k<matrixhossz && mehet==true;k++){
-                        for(int l=j;l<matrixhossz && mehet==true;l++){
-                            if(hasonlitani!=v[k][l]){
-                                mehet=false;
-                            }
-                        }
-                    }
-                if(mehet==true){
-                    legnagyobb=x;
-                }
-
-            }
-        }
+    cout << s_down << " "<<s_up<<endl;
+    int x = s_up * s_down;
+    while(s_up != s_down){
+        if(s_up > s_down) s_up -= s_down;
+        else s_down -= s_up;
     }
-    cout<<legnagyobb;
 
+    out<< x/s_down;
 
 
     return 0;
