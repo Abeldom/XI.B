@@ -1,0 +1,83 @@
+#include <iostream>
+
+using namespace std;
+
+int hatvany(int n){
+    int a=1;
+    for(int i=1;i<=n;i++){
+        a=a*2;
+    }
+    return a;
+}
+
+int main()
+{
+
+
+    int n;
+    cin>>n;
+    int lepesek[n+1][hatvany(n)][2]={0};
+    lepesek[1][1][0]=1;
+    lepesek[1][1][1]=3;
+    for(int i=2;i<=n;i++){
+        int hatar=hatvany(i-1)-1;
+        int csere;
+        if(n%2==1){
+            csere=3;
+        }else{
+            csere=1;
+        }
+        for(int j=1;j<=hatar;j++){
+
+            if(lepesek[i-1][j][0]==2){
+                lepesek[i][j][1]=3;
+            }else if(lepesek[i-1][j][1]==2){
+                lepesek[i][j][0]=3;
+            }
+
+            if(lepesek[i-1][j][0]==3){
+                lepesek[i][j][0]=2;
+            }else if(lepesek[i-1][j][1]==3){
+                lepesek[i][j][0]=2;
+            }
+
+            if(lepesek[i-1][j][0]==3){
+                lepesek[i][j][0]=2;
+            }else if(lepesek[i-1][j][1]==3){
+                lepesek[i][j][0]=2;
+            }
+
+        }
+        lepesek[i][hatar+1][0]=1;
+        lepesek[i][hatar+1][1]=csere;
+
+        for(int j=hatar+2;j<=hatar*2-1;j++){
+
+            if(lepesek[i-1][j][0]==3 ){
+                lepesek[i][j][0]=3;
+            }else if(lepesek[i-1][j][1]==3){
+                lepesek[i][j][1]=3;
+            }
+
+            if(lepesek[i-1][j][0]==2){
+                lepesek[i][j][0]=1;
+            }else if(lepesek[i-1][j][1]==2){
+                lepesek[i][j][1]=1;
+            }
+
+            if(lepesek[i-1][j][0]==1){
+                lepesek[i][j][0]=2;
+            }else if(lepesek[i-1][j][1]==1){
+                lepesek[i][j][1]=2;
+            }
+        }
+
+
+    }
+    for(int i=1;i<=hatvany(n)-1;i++){
+        cout<<lepesek[n][i][0]<<"-->"<<lepesek[n][i][1]<<endl;
+    }
+
+
+    return 0;
+}
