@@ -66,7 +66,5 @@ int main()
         .... es itt modositok valamit
     */
 
-    cout << "Itt jon egy uj kod! blabla" << endl;
-
     return 0;
 }
