@@ -63,8 +63,10 @@ int main()
 
     cout << "Itt valami uj kod jon" << endl;
     /*
-        ....
+        .... es itt modositok valamit
     */
+
+    cout << "Itt jon egy uj kod! blabla" << endl;
 
     return 0;
 }
